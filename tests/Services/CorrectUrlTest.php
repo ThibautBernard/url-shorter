@@ -14,7 +14,7 @@ class CorrectUrlTest extends TestCase
     {
         $correct = new CorrectUrl('dslodzdkz');
         $value = $correct->isUrl();
-        $this->assertSame('Not an Url', $value);
+        $this->assertNotTrue($value);
     }
 
     /**
@@ -46,7 +46,7 @@ class CorrectUrlTest extends TestCase
     {
         $correct = new CorrectUrl('12772:http');
         $value = $correct->isUrl();
-        $this->assertSame('Not an Url', $value);
+        $this->assertNotTrue($value);
     }
 
 }
