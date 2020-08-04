@@ -16,7 +16,7 @@ class CorrectUrl
         {
             return true;
         }
-        else{return false;}
+        else{return 'Not an Url';}
     }
 
 }

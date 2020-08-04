@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Url;
 use App\Form\UrlType;
 use DateTime;
-use App\Services\CorrectUrl;
+
 class HomeController extends AbstractController
 {
 
@@ -21,25 +21,10 @@ class HomeController extends AbstractController
         
         $form = $this->createForm(UrlType::class, $url);
         $url->setDateCreated(new DateTime('NOW'));
- 
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
+       
+        if($form->isSubmitted())
         {
-           $verif =  new CorrectUrl($url->getOriginalUrl());
-           if($verif->isUrl())
-           {
-                $url->setNameShortUrl(substr(md5(time()), 0, 5));                
-                $newShortUrl = 'url-short.herokoku/'. $url->getNameShortUrl();
-
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($url);
-                $entityManager->flush();
-
-                echo 'Url short : ' . $newShortUrl;
-                
-           }
-           else{echo 'Wrong Url';}
+            echo 'Hello';
         }
 
         return $this->render('home.html.twig', ['form' => $form->createView()]);
