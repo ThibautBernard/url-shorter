@@ -21,6 +21,7 @@ class HomeController extends AbstractController
         
         $form = $this->createForm(UrlType::class, $url);
         $url->setDateCreated(new DateTime('NOW'));
+       
         if($form->isSubmitted())
         {
             echo 'Hello';
