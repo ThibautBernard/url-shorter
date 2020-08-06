@@ -10,7 +10,7 @@ class GetUrlController extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', '/2a03b');
+        $client->request('GET', '/1b552');
 
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
     }
@@ -28,7 +28,7 @@ class GetUrlController extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', '/2a03b');
+        $client->request('GET', '/1b552');
         $this->assertResponseRedirects();
     }
 

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200804190343 extends AbstractMigration
+final class Version20200806124210 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -20,12 +20,15 @@ final class Version20200804190343 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE url (id INT AUTO_INCREMENT NOT NULL, name_short_url VARCHAR(255) NOT NULL, original_url VARCHAR(255) NOT NULL, date_created DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE SEQUENCE url_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE TABLE url (id INT NOT NULL, name_short_url VARCHAR(255) NOT NULL, original_url VARCHAR(255) NOT NULL, date_created TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
     }
 
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('CREATE SCHEMA public');
+        $this->addSql('DROP SEQUENCE url_id_seq CASCADE');
         $this->addSql('DROP TABLE url');
     }
 }
