@@ -3,10 +3,10 @@ namespace tests\Controller\Api;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class ApiControllerTest extends WebTestCase
+class GetUrlController extends WebTestCase
 {
 
-    public function testIfApiReturn200AfterACallGetWithStringParam()
+    public function testIfReturn302RedirectionAfterACallGetWithStringParam()
     {
         $client = static::createClient();
 
@@ -15,16 +15,16 @@ class ApiControllerTest extends WebTestCase
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
     }
  
-    public function testIfNotExistNameUrlGiven()
+    public function testIfRedirectAfterGivenUrlNameFalse()
     {
         $client = static::createClient();
 
         $client->request('GET', '/zdidzijji');
 
-        $this->assertResponseRedirects();
+        $this->assertResponseRedirects('/url/error');
     }
 
-    public function testIfReloadTheGoodOriginalURLAfterApiCall()
+    public function testIfRedirectionAfterGivenRealShortUrlName()
     {
         $client = static::createClient();
 

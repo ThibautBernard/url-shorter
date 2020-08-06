@@ -36,9 +36,6 @@ class HomeController extends AbstractController
                 $entityManager->persist($url);
                 $entityManager->flush();
                 return $this->render('home.html.twig', ['form' => $form->createView(), 'shortUrl' => $newShortUrl]);
-
-                
-                
            }
            else{echo 'Wrong Url';}
         }
