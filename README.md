@@ -4,5 +4,5 @@ Version : 0.0.1
 
 https://shoorter.herokuapp.com
 
- * Used PostGreSQL, TDD & Symfony.
+ * Used PostGreSQL, GitFlow, Heroku, TDD & Symfony.
 
